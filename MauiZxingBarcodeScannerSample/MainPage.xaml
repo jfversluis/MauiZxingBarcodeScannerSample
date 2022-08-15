@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
+             xmlns:maui="clr-namespace:ZXing.Net.Maui;assembly=ZXing.Net.MAUI"
              x:Class="MauiZxingBarcodeScannerSample.MainPage">
 
     <ScrollView>
@@ -9,13 +11,18 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <zxing:CameraBarcodeReaderView BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected" HeightRequest="300">
+                <!--<zxing:CameraBarcodeReaderView.Options>
+                   <maui:BarcodeReaderOptions Formats="QrCode" AutoRotate="True" Multiple="True">
+                       
+
+                   </maui:BarcodeReaderOptions>
+
+               </zxing:CameraBarcodeReaderView.Options>-->
+            </zxing:CameraBarcodeReaderView>
 
             <Label
+                x:Name="barcodeResult"
                 Text="Hello, World!"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"

@@ -20,5 +20,13 @@ public partial class MainPage : ContentPage
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
+
+    void CameraBarcodeReaderView_BarcodesDetected(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    {
+        Dispatcher.Dispatch(() =>
+        {
+            barcodeResult.Text = $"{e.Results[0].Value} {e.Results[0].Format}";
+        });
+    }
 }
 
